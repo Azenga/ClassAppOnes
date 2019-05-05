@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "922265933798",
+    "firebase_url": "https://classappones.firebaseio.com",
+    "project_id": "classappones",
+    "storage_bucket": "classappones.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922265933798:android:4c1be1851454ec6e",
+        "android_client_info": {
+          "package_name": "com.shadow.classappones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922265933798-gnq9c6dlord8jpdeh2krf7mktq5uh390.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shadow.classappones",
+            "certificate_hash": "8b7732adc54798f800c595d4cea8d6dabd3c0c59"
+          }
+        },
+        {
+          "client_id": "922265933798-5g3jvoreg7f864evikujr5pmof69qnpt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX0hLTvoPSDD-z8J4NxSqlrR14DNlSE_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922265933798-5g3jvoreg7f864evikujr5pmof69qnpt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,15 +2,17 @@ package com.shadow.classappones;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.shadow.classappones.models.User;
 
 public class AddUserActivity extends AppCompatActivity {
 
@@ -20,6 +22,9 @@ public class AddUserActivity extends AppCompatActivity {
     private String mUserGroup = null;
 
     private TextInputEditText nameTIET, ageTIET, locationTIET;
+    private Button button;
+
+    private FirebaseFirestore mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,46 +37,62 @@ public class AddUserActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Add " + mUserGroup);
 
         initComponents();
+        mDb = FirebaseFirestore.getInstance();
+
+        button.setOnClickListener(view -> addUser());
     }
 
     private void initComponents() {
         nameTIET = findViewById(R.id.name_txt);
         ageTIET = findViewById(R.id.age_txt);
         locationTIET = findViewById(R.id.location_txt);
+
+        button = findViewById(R.id.button);
     }
 
-    public void addUser(View view) {
-
-        String name = nameTIET.getText().toString();
-        String location = locationTIET.getText().toString();
-        int age = Integer.parseInt(locationTIET.getText().toString());
-
-        if (emptyFields()) return;
-
-        Map<String, Object> userMap = new HashMap<>();
-
-        userMap.put("name", name);
-        userMap.put("location", location);
-        userMap.put("age", age);
-        userMap.put("group", mUserGroup.toLowerCase());
-        userMap.put("timestamp", new Date());
-    }
-
-    private boolean emptyFields() {
+    private void addUser() {
 
         if (TextUtils.isEmpty(nameTIET.getText())) {
             nameTIET.setError("Name is required");
             nameTIET.requestFocus();
-            return true;
+            return;
         } else if (TextUtils.isEmpty(ageTIET.getText())) {
             ageTIET.setError("Age is required");
             ageTIET.requestFocus();
-            return true;
+            return;
         } else if (TextUtils.isEmpty(locationTIET.getText())) {
             locationTIET.setError("Location is required");
             locationTIET.requestFocus();
-            return true;
-        } else return false;
+            return;
+        }
+
+        String name = String.valueOf(nameTIET.getText());
+        String location = String.valueOf(locationTIET.getText());
+        int age = Integer.parseInt(String.valueOf(ageTIET.getText()));
+
+        User user = new User(name, location, mUserGroup, age);
+
+        ProgressDialog.show(this, "Adding " + mUserGroup, "Please wait...");
+
+        mDb.collection("users")
+                .add(user)
+                .addOnCompleteListener(
+                        task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(this, mUserGroup + " added", Toast.LENGTH_SHORT).show();
+
+                                if (mUserGroup.equalsIgnoreCase("Student")) {
+                                    startActivity(new Intent(this, StudentsActivity.class));
+                                } else {
+                                    startActivity(new Intent(this, TeachersActivity.class));
+                                }
+                            } else {
+                                Log.e(TAG, "addUser: Failed", task.getException());
+                                Toast.makeText(this, "Try Again Later", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
 
     }
+
 }
