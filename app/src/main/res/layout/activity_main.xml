@@ -9,12 +9,24 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="96dp"
         android:columnCount="2"
         android:rowCount="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="@dimen/dimen_8dp"
+            app:cardBackgroundColor="@color/colorPrimary"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="@dimen/dimen_8dp"
+            app:cardBackgroundColor="@color/colorPrimary"/>
 
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
