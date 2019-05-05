@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">ClassAppOnes</string>
+    <string name="app_name">ClassApp</string>
+    <string name="teachers">Teachers</string>
+    <string name="students">Students</string>
+    <string name="students_picture">Students Picture</string>
+    <string name="teachers_picture">Teachers Picture</string>
+    <string name="name">Name:</string>
+    <string name="username">Username</string>
+    <string name="location">Location:</string>
+    <string name="age">Age:</string>
+    <string name="user_age">User Age</string>
+    <string name="user_location">User Location</string>
+    <string name="name_hint">Name...</string>
+    <string name="age_hint">Age...</string>
+    <string name="location_hint">Location...</string>
+    <string name="add">Add</string>
 </resources>

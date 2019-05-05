@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:columnCount="2"
         android:rowCount="1"
@@ -17,16 +18,81 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/students_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_margin="@dimen/dimen_8dp"
-            app:cardBackgroundColor="@color/colorPrimary"/>
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="4dp"
+                    android:text="@string/students"
+                    android:textColor="@android:color/black" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="4dp"
+                    android:background="@color/colorPrimary" />
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:contentDescription="@string/students_picture"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/students" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/teachers_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_margin="@dimen/dimen_8dp"
-            app:cardBackgroundColor="@color/colorPrimary"/>
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="4dp"
+                    android:text="@string/teachers"
+                    android:textColor="@android:color/black" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="4dp"
+                    android:background="@color/colorPrimary" />
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:contentDescription="@string/students_picture"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/teachers" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
 
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
