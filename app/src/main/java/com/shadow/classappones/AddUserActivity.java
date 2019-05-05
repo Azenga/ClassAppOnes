@@ -83,8 +83,10 @@ public class AddUserActivity extends AppCompatActivity {
 
                                 if (mUserGroup.equalsIgnoreCase("Student")) {
                                     startActivity(new Intent(this, StudentsActivity.class));
+                                    finish();
                                 } else {
                                     startActivity(new Intent(this, TeachersActivity.class));
+                                    finish();
                                 }
                             } else {
                                 Log.e(TAG, "addUser: Failed", task.getException());
